@@ -1,0 +1,137 @@
+/* font chữ */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@500;600;700&display=swap');
+*{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    margin: 0 auto;
+}
+
+/* Header styles inherited from main style.css */
+header{
+    background-color: #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px 0;
+}
+
+header .container .content_header{
+    display: flex;
+    align-items: center;
+}
+
+header .container .content_header .logo_header{
+    flex-basis: 10%;
+}
+
+header .container .content_header .menu_header{
+    flex-basis: 80%;
+}
+
+header .container .content_header .card_head{
+    flex-basis: 10%;
+}
+
+header .container .content_header .menu_header nav .nav_link li{
+    display: inline-block;
+    list-style: none;
+    margin: 0 20px;
+}
+
+header .container .content_header .menu_header nav .nav_link li a{
+    text-decoration: none;
+    color: #000;
+    font-weight: 400;
+}
+
+/* Warranty page specific styles */
+.warranty-content {
+    padding: 40px 0;
+}
+
+.warranty-content .container {
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+.warranty-content .title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.warranty-content .title h2 {
+    font-size: 32px;
+    color: #ff0040;
+    margin-bottom: 15px;
+}
+
+.warranty-content .warranty-info {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.warranty-content .warranty-info h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.warranty-content .warranty-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.warranty-content .warranty-steps {
+    margin-top: 30px;
+}
+
+.warranty-content .warranty-steps .step {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.warranty-content .warranty-steps .step h4 {
+    font-size: 20px;
+    color: #ff0040;
+    margin-bottom: 10px;
+}
+
+.warranty-content .warranty-steps .step p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Footer styles inherited from main style.css */
+footer {
+    background: rgba(0,0,0,0.05);
+    padding: 15px 0 0 0;
+}
+
+footer .container .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+footer .container .row .col-4 {
+    flex-basis: 33.333333%;
+    padding: 0 15px;
+}
+
+footer p.copyright {
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-size: 12px;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập Admin - Bee Mobile Store</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="admin-login-form">
+            <div class="logo">
+                <img src="image/logo.jpg" alt="Logo">
+                <h1>Quản trị Bee Mobile Store</h1>
+            </div>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="username">Tên đăng nhập</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Đăng nhập</button>
+                </div>
+                <div class="form-message" id="loginMessage"></div>
+            </form>
+            <div class="back-to-site">
+                <a href="index.html"><i class="fas fa-arrow-left"></i> Quay lại trang chủ</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/admin-auth.js"></script>
+</body>
+</html>

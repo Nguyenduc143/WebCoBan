@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - Cửa hàng điện thoại</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="content_header">
+                <div class="logo_header">
+                    <a href="index.html"><img src="image/logo.jpg" alt="Logo"></a>
+                </div>
+                <div class="menu_header">
+                    <nav>
+                        <ul class="nav_link">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="products.html">Sản phẩm</a></li>
+                            <li><a href="about.html">Giới thiệu</a></li>
+                            <li><a href="contact.html">Liên hệ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="auth-buttons">
+                    <button onclick="openLoginModal()">Đăng nhập</button>
+                    <button onclick="openRegisterModal()">Đăng ký</button>
+                </div>
+                <div class="user-info" style="display: none;">
+                    <!-- Thông tin người dùng sẽ được thêm bởi JavaScript -->
+                </div>
+                <div class="card_head">
+                    <a href="cart.html" class="card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Đăng nhập</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Tên đăng nhập:</label>
+                    <input type="text" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mật khẩu:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegisterModal()">&times;</span>
+            <h2>Đăng ký</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Họ tên:</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email:</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Mật khẩu:</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Xác nhận mật khẩu:</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+
+    <main class="cart-page">
+        <div class="container">
+            <h1>Giỏ hàng của bạn</h1>
+            <div class="cart-content">
+                <div class="cart-items">
+                    <table id="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng</th>
+                                <th>Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items">
+                            <!-- Cart items will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="cart-summary">
+                    <h2>Tổng giỏ hàng</h2>
+                    <div class="summary-item">
+                        <span>Tổng tiền:</span>
+                        <span id="cart-total">0 ₫</span>
+                    </div>
+                    <button id="checkout-btn" class="checkout-button">Thanh toán</button>
+                    <button id="continue-shopping" class="continue-shopping">Tiếp tục mua sắm</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <img src="image/logo.jpg" alt="">
+                    <p class="name_website">Phone Store</p>
+                    <p>Chuyên cung cấp các sản phẩm điện thoại chính hãng</p>
+                </div>
+                <div class="col-4">
+                    <p class="title">Thông tin liên hệ</p>
+                    <ul>
+                        <li><a href="">Giới thiệu</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                        <li><a href="">Chính sách bảo mật</a></li>
+                        <li><a href="">Tin tức</a></li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <p class="title">Chính sách</p>
+                    <ul>
+                        <li><a href="shipping.html">Chính sách vận chuyển</a></li>
+                        <li><a href="warranty.html">Chính sách bảo hành</a></li>
+                        <li><a href="return.html">Chính sách đổi trả</a></li>
+                        <li><a href="payment.html">Phương thức thanh toán</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">© 2023 Phone Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

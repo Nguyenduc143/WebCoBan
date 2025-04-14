@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm - Bee Mobile Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+    <script src="js/auth.js" defer></script>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <div class="content_header">
+                <div class="logo_header">
+                    <img src="image/logo.jpg" alt="">
+                </div>
+                <div class="menu_header">
+                    <nav>
+                        <ul class="nav_link">
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li><a href="products.html">Sản phẩm</a></li>
+                            <li><a href="about.html">Giới thiệu</a></li>
+                            <li><a href="contact.html">Liên hệ</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="auth-buttons">
+                    <button onclick="openLoginModal()">Đăng nhập</button>
+                    <button onclick="openRegisterModal()">Đăng ký</button>
+                </div>
+                <div class="user-info" style="display: none;">
+                    <!-- Thông tin người dùng sẽ được thêm bởi JavaScript -->
+                </div>
+                <div class="card_head">
+                    <a href="cart.html" class="card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Đăng nhập</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Tên đăng nhập:</label>
+                    <input type="text" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mật khẩu:</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegisterModal()">&times;</span>
+            <h2>Đăng ký</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Họ tên:</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email:</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Mật khẩu:</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Xác nhận mật khẩu:</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+    <!-- end header -->
+
+    <!-- body -->
+    <section class="products_section">
+        <div class="container">
+            <h1>Sản phẩm của chúng tôi</h1>
+            <div class="filter_section">
+                <div class="search_box">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter_options">
+                    <select name="brand" id="brand_filter">
+                        <option value="">Thương hiệu</option>
+                        <option value="apple">Apple</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="xiaomi">Xiaomi</option>
+                    </select>
+                    <select name="price" id="price_filter">
+                        <option value="">Giá</option>
+                        <option value="0-5000000">Dưới 5 triệu</option>
+                        <option value="5000000-10000000">5 - 10 triệu</option>
+                        <option value="10000000-20000000">10 - 20 triệu</option>
+                        <option value="20000000+">Trên 20 triệu</option>
+                    </select>
+                </div>
+            </div>
+            <div class="products_grid">
+                <!-- iPhone 13 Pro Max -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/iphone-13-13.png" alt="iPhone 13 Pro Max">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=iphone-13-pro-max" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>iPhone 13 Pro Max</h3>
+                        <p class="price">29.990.000đ</p>
+                        <div class="product_features">
+                            <span>6.7" Super Retina XDR</span>
+                            <span>A15 Bionic</span>
+                            <span>128GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                <!-- Samsung Galaxy S21 Ultra -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/samsung2.jpg" alt="Samsung Galaxy S21 Ultra">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=samsung-s21-ultra" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>Samsung Galaxy S21 Ultra</h3>
+                        <p class="price">25.990.000đ</p>
+                        <div class="product_features">
+                            <span>6.8" Dynamic AMOLED</span>
+                            <span>Exynos 2100</span>
+                            <span>256GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                <!-- Samsung Galaxy Z Fold 3 -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/zfold3.jpg" alt="Samsung Galaxy Z Fold 3">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=samsung-z-fold-3" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>Samsung Galaxy Z Fold 3</h3>
+                        <p class="price">41.990.000đ</p>
+                        <div class="product_features">
+                            <span>7.6" Dynamic AMOLED 2X</span>
+                            <span>Snapdragon 888</span>
+                            <span>256GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                <!-- Xiaomi Mi 11 Ultra -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/xm1.webp" alt="Xiaomi Mi 11 Ultra">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=xiaomi-mi-11-ultra" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>Xiaomi Mi 11 Ultra</h3>
+                        <p class="price">21.990.000đ</p>
+                        <div class="product_features">
+                            <span>6.81" AMOLED</span>
+                            <span>Snapdragon 888</span>
+                            <span>256GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                <!-- iPhone 12 Pro -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/iphone-12-1.webp" alt="iPhone 12 Pro">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=iphone-12-pro" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>iPhone 12 Pro</h3>
+                        <p class="price">24.990.000đ</p>
+                        <div class="product_features">
+                            <span>6.1" Super Retina XDR</span>
+                            <span>A14 Bionic</span>
+                            <span>128GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                <!-- Samsung Galaxy A52s -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/a52s.webp" alt="Samsung Galaxy A52s">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=samsung-galaxy-a52s" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>Samsung Galaxy A52s</h3>
+                        <p class="price">8.990.000đ</p>
+                        <div class="product_features">
+                            <span>6.5" Super AMOLED</span>
+                            <span>Snapdragon 778G</span>
+                            <span>128GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                <!-- Samsung Galaxy A72 -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/a72.jpg" alt="Samsung Galaxy A72">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=samsung-galaxy-a72" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>Samsung Galaxy A72</h3>
+                        <p class="price">10.990.000đ</p>
+                        <div class="product_features">
+                            <span>6.7" Super AMOLED</span>
+                            <span>Snapdragon 720G</span>
+                            <span>256GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                <!-- iPhone 11 -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/iphone11a.jpg" alt="iPhone 11">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=iphone-11" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>iPhone 11</h3>
+                        <p class="price">11.990.000đ</p>
+                        <div class="product_features">
+                            <span>6.1" Liquid Retina</span>
+                            <span>A13 Bionic</span>
+                            <span>64GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                    <!-- Xiaomi 12 Pro -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/xm1.webp" alt="Xiaomi 12 Pro">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=xiaomi-12-pro" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>Xiaomi 12 Pro</h3>
+                        <p class="price">18.990.000đ</p>
+                        <div class="product_features">
+                            <span>6.73" AMOLED</span>
+                            <span>Snapdragon 8 Gen 1</span>
+                            <span>256GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+                <!-- iPhone 12 -->
+                <div class="product_card">
+                    <div class="product_image">
+                        <img src="image/iphone-12.jpg" alt="iPhone 12">
+                        <div class="product_overlay">
+                            <a href="detail.html?id=iphone-12" class="view_detail">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="product_info">
+                        <h3>iPhone 12</h3>
+                        <p class="price">17.990.000đ</p>
+                        <div class="product_features">
+                            <span>6.1" Super Retina XDR</span>
+                            <span>A14 Bionic</span>
+                            <span>128GB</span>
+                        </div>
+                        <button class="add_to_cart">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end body -->
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h3 class="name_website">Bee Mobile Store</h3>
+                    <div>
+                        <img src="image/logo.jpg" alt="Logo Bee Mobile Store">
+                    </div>
+                    <p>
+                        Chuyên cung cấp các sản phẩm điện thoại chính hãng với giá tốt nhất thị trường. Cam kết chất lượng và dịch vụ hậu mãi tốt nhất cho khách hàng.
+                    </p>
+                </div>
+                <div class="col-4">
+                    <h3 class="title">Thông tin</h3>
+                    <ul>
+                        <li><a href="">Chính sách bảo hành</a></li>
+                        <li><a href="">Chính sách đổi trả</a></li>
+                        <li><a href="">Chính sách vận chuyển</a></li>
+                        <li><a href="">Hướng dẫn thanh toán</a></li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <h3 class="title">Liên hệ</h3>
+                    <ul>
+                        <li><a href="tel:0123456789">Hotline: 0123 456 789</a></li>
+                        <li><a href="mailto:contact@beemobile.com">Email: contact@beemobile.com</a></li>
+                        <li><a href="">Địa chỉ: 123 Đường ABC, Quận XYZ, TP.HCM</a></li>
+                        <li><a href="">Giờ làm việc: 8:00 - 21:00</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="copyright">Website design By Nguyen Duc</p>
+    </footer>
+    <!-- end footer -->
+
+    <script src="js/slide.js"></script>
+    <script src="js/products.js"></script>
+    <script src="https://kit.fontawesome.com/6f240c32c3.js" crossorigin="anonymous"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
