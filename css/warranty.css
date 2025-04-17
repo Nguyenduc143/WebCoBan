@@ -9,6 +9,8 @@
 
 .container{
     margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 15px;
 }
 
 /* Header styles inherited from main style.css */
@@ -48,66 +50,164 @@ header .container .content_header .menu_header nav .nav_link li a{
 }
 
 /* Warranty page specific styles */
-.warranty-content {
+.warranty_section {
     padding: 40px 0;
 }
 
-.warranty-content .container {
-    max-width: 1200px;
-    padding: 0 15px;
-}
-
-.warranty-content .title {
+.warranty_section h1 {
     text-align: center;
     margin-bottom: 30px;
+    color: #333;
+    font-size: 2.5em;
 }
 
-.warranty-content .title h2 {
-    font-size: 32px;
-    color: #ff0040;
-    margin-bottom: 15px;
-}
-
-.warranty-content .warranty-info {
+.warranty_policy {
+    max-width: 800px;
+    margin: 0 auto;
     background: #fff;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.warranty-content .warranty-info h3 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 15px;
+.warranty_policy h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8em;
 }
 
-.warranty-content .warranty-info p {
-    font-size: 16px;
-    line-height: 1.6;
+.warranty_policy p {
     color: #666;
+    line-height: 1.6;
     margin-bottom: 15px;
 }
 
-.warranty-content .warranty-steps {
-    margin-top: 30px;
+.warranty_steps {
+    margin-top: 40px;
 }
 
-.warranty-content .warranty-steps .step {
-    background: #f8f8f8;
-    padding: 20px;
-    border-radius: 8px;
+.warranty_steps h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.steps_list {
+    list-style-position: inside;
     margin-bottom: 20px;
 }
 
-.warranty-content .warranty-steps .step h4 {
-    font-size: 20px;
-    color: #ff0040;
+.steps_list li {
+    color: #666;
+    line-height: 1.6;
     margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
 }
 
-.warranty-content .warranty-steps .step p {
-    font-size: 16px;
+.steps_list li:before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #3498db;
+}
+
+.conditions {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.conditions h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.conditions ul {
+    list-style-type: none;
+}
+
+.conditions ul li {
     color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.conditions ul li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+}
+
+/* Responsive layout */
+@media (max-width: 992px) {
+    .warranty_section h1 {
+        font-size: 2.2em;
+    }
+    
+    .warranty_policy {
+        padding: 25px;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .warranty_section h1 {
+        font-size: 2em;
+    }
+    
+    .warranty_policy {
+        padding: 20px;
+    }
+    
+    .warranty_policy h2 {
+        font-size: 1.5em;
+    }
+    
+    .steps_list li,
+    .conditions ul li {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 576px) {
+    .warranty_section h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    
+    .warranty_policy {
+        padding: 15px;
+    }
+    
+    .warranty_policy h2 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+    
+    .warranty_policy h3 {
+        font-size: 1.2em;
+    }
+    
+    .warranty_policy p {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+    
+    .steps_list li,
+    .conditions ul li {
+        font-size: 0.9em;
+        margin-bottom: 8px;
+    }
+    
+    .conditions {
+        padding: 15px;
+    }
 }
 
 /* Footer styles inherited from main style.css */
