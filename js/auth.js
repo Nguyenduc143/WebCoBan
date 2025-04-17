@@ -198,8 +198,26 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
 
 // Đăng xuất
 function logout() {
+    // Lưu email người dùng trước khi xóa
+    const userEmail = currentUser ? currentUser.email : null;
+    
+    // Xóa thông tin người dùng hiện tại
     currentUser = null;
     localStorage.removeItem('currentUser');
+    
+    // Reset giỏ hàng nếu có
+    if (userEmail) {
+        localStorage.removeItem(`cart_${userEmail}`);
+        localStorage.removeItem(`cartTotal_${userEmail}`);
+    }
+    
+    // Reset span số lượng sản phẩm về 0
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+        cartCount.textContent = '0';
+    }
+    
+    // Cập nhật UI
     updateAuthUI();
     alert('Đã đăng xuất!');
 }

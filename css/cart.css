@@ -1,6 +1,7 @@
 /* Cart page styles */
 .cart-page {
     padding: 40px 0;
+    min-height: calc(100vh - 180px); /* Chiều cao tối thiểu để đảm bảo footer nằm ở dưới */
 }
 
 .cart-page h1 {
