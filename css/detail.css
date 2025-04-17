@@ -35,7 +35,7 @@ header .container .content_header .card_head .card{
 }
 header .container .content_header .card_head .card span{
     position: absolute;
-    top: -20px;
+    top: -28px;
     right: -10px;
     background-color: #f00;
     color: #fff;
@@ -362,100 +362,5 @@ footer .container .row .col-4 ul li a:hover{
 }
 
 /*  */
-.popup_shopping{
-    visibility: hidden;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: #fff;
-    padding: 15px 30px;
-    z-index: 11;
-    width: 50rem;
-    /* width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999; */
-}
-.popup_shopping.active{
-    visibility: visible;
-    animation: animate 1s ease-out forwards;
-    
-}
-@keyframes animate{
-    0%{
-        visibility: hidden;
-        top: 0;
-    }
-    50%{
-        top: 40%;
-    }
-    70%{
-        top: 45%;
-    }
-    100%{
-        top: 50%;
-        visibility: visible;
-    }
-}
-.overlay{
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    
-    min-width: 100vw;
-    min-height: 100vh;
-    background: rgba(0,0,0,0.5);
-    z-index: 10;
-    /* background: rgba(0,0,0,0.5);
-    z-index: 9998; */
-}
-.overlay.active{
-    display: block;
-}
-.popup_shopping .body_shopping table{
-    border-collapse: collapse;
-    width: 100%;
-}
-.popup_shopping .body_shopping table td,th{
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-.popup_shopping .body_shopping table td a{
-    display: inline-block;
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 15px;
-    margin: 5px;
-}
-.popup_shopping .body_shopping table td a:first-child{
-    background: #ff0040;
-    
-}
-.popup_shopping .body_shopping table td a:last-child{
-    background: #0066ff;
-    
-}
-.popup_shopping .body_shopping .close{
-    text-align: right;
-    margin: 15px 0 0 0 ;
-}
-.popup_shopping .body_shopping .close button{
-   
-    background: #ff0000;
-    color: #fff;
-    font-weight: 600;
-    outline: none;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    
-}
-.popup_shopping .body_shopping .close button:hover{
-    opacity: 0.8;
-}
+
+

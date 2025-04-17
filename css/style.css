@@ -560,11 +560,7 @@ footer .container .row .col-4 ul li a:hover{
     justify-content: center;
     z-index: 9999; */
 }
-.popup_shopping.active{
-    visibility: visible;
-    animation: animate 1s ease-out forwards;
-    
-}
+
 @keyframes animate{
     0%{
         visibility: hidden;

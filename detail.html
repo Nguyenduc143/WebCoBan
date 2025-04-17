@@ -38,10 +38,10 @@
                     <!-- Thông tin người dùng sẽ được thêm bởi JavaScript -->
                 </div>
                 <div class="card_head">
-                    <div class="card">
-                        <i class="fas fa-shopping-cart" id="popup_card"></i>
-                        <span>0</span>
-                    </div>
+                    <a href="cart.html" class="card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -214,23 +214,6 @@
        </div>
       <script src="js/slide.js"></script>
       <script src="https://kit.fontawesome.com/6f240c32c3.js" crossorigin="anonymous"></script>
-      <script>
-        let popup_card = document.getElementById("popup_card");
-        let popup = document.querySelector(".popup_shopping");
-        let overlay = document.querySelector(".overlay");
-        let button = document.querySelector("button.button");
-        popup_card.addEventListener("click", ()=>{
-            popup.classList.add("active");
-            overlay.classList.add("active");
-        });
-        overlay.addEventListener("click", ()=>{
-            popup.classList.remove("active");
-            overlay.classList.remove("active");
-        });
-        button.addEventListener("click", ()=>{
-            popup.classList.remove("active");
-            overlay.classList.remove("active");
-        });
-      </script>
+      
 </body>
 </html>
