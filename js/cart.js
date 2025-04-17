@@ -1,5 +1,19 @@
-// Khởi tạo giỏ hàng từ localStorage hoặc mảng rỗng
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+// Khởi tạo giỏ hàng từ localStorage dựa vào người dùng hiện tại
+function initializeCart() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+    if (currentUser) {
+        // Nếu đã đăng nhập, lấy giỏ hàng riêng của người dùng đó
+        const userCart = localStorage.getItem(`cart_${currentUser.email}`);
+        cart = userCart ? JSON.parse(userCart) : [];
+    } else {
+        // Nếu chưa đăng nhập, giỏ hàng rỗng
+        cart = [];
+    }
+    
+    // Cập nhật số lượng sản phẩm trong giỏ hàng
+    updateCartCount();
+}
 
 // Hàm kiểm tra người dùng đã đăng nhập chưa
 function isUserLoggedIn() {
@@ -9,13 +23,15 @@ function isUserLoggedIn() {
 
 // Thêm sự kiện click cho icon giỏ hàng
 document.addEventListener('DOMContentLoaded', function() {
+    // Khởi tạo giỏ hàng dựa trên người dùng hiện tại
+    initializeCart();
+    
     const cartIcon = document.querySelector('.fa-shopping-cart');
     if (cartIcon) {
         cartIcon.addEventListener('click', function() {
             window.location.href = 'cart.html';
         });
     }
-    updateCartCount();
     
     // Xử lý nút tiếp tục mua sắm
     const continueShoppingBtn = document.getElementById('continue-shopping');
@@ -39,9 +55,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (cart.length > 0) {
                 alert('Đặt hàng thành công! Cảm ơn bạn đã mua sắm tại Bee Mobile Store.');
+                
                 // Xóa giỏ hàng sau khi thanh toán
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
                 cart = [];
-                localStorage.setItem('cart', JSON.stringify(cart));
+                localStorage.setItem(`cart_${currentUser.email}`, JSON.stringify(cart));
                 renderCart();
                 // Thêm xử lý thanh toán ở đây (có thể chuyển đến trang xác nhận đơn hàng)
             } else {
@@ -78,21 +96,40 @@ function formatPrice(price) {
 // Cập nhật tổng tiền
 function updateTotal() {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    document.getElementById('cart-total').textContent = formatPrice(total);
-    localStorage.setItem('cartTotal', total);
+    const totalElement = document.getElementById('cart-total');
+    if (totalElement) {
+        totalElement.textContent = formatPrice(total);
+    }
+    
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        localStorage.setItem(`cartTotal_${currentUser.email}`, total);
+    }
 }
 
 // Cập nhật số lượng sản phẩm
 function updateQuantity(index, change) {
     cart[index].quantity = Math.max(1, cart[index].quantity + change);
-    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Lưu giỏ hàng theo người dùng hiện tại
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        localStorage.setItem(`cart_${currentUser.email}`, JSON.stringify(cart));
+    }
+    
     renderCart();
 }
 
 // Xóa sản phẩm khỏi giỏ hàng
 function removeItem(index) {
     cart.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Lưu giỏ hàng theo người dùng hiện tại
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        localStorage.setItem(`cart_${currentUser.email}`, JSON.stringify(cart));
+    }
+    
     renderCart();
 }
 
@@ -141,12 +178,21 @@ function renderCart() {
 
 // Thêm sản phẩm vào giỏ hàng
 function addToCart(product) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+        alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!');
+        openLoginModal(); // Mở form đăng nhập nếu đã được định nghĩa
+        return;
+    }
+    
     const existingItem = cart.find(item => item.id === product.id);
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
         cart.push({ ...product, quantity: 1 });
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Lưu giỏ hàng theo người dùng hiện tại
+    localStorage.setItem(`cart_${currentUser.email}`, JSON.stringify(cart));
     updateCartCount();
 }

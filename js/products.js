@@ -69,18 +69,29 @@ function filterProducts() {
         products.forEach(product => {
             let show = true;
             const price = parseInt(product.querySelector('.price').textContent.replace(/[^0-9]/g, ''));
-            const brand = product.querySelector('h3').textContent.toLowerCase();
+            const productName = product.querySelector('h3').textContent.toLowerCase();
 
             // Lọc theo thương hiệu
-            if (brandFilter && !brand.includes(brandFilter)) {
-                show = false;
+            if (brandFilter) {
+                if (brandFilter === 'apple' && !productName.includes('iphone')) {
+                    show = false;
+                } else if (brandFilter === 'samsung' && !productName.includes('samsung')) {
+                    show = false;
+                } else if (brandFilter === 'xiaomi' && !productName.includes('xiaomi')) {
+                    show = false;
+                }
             }
 
             // Lọc theo giá
             if (priceFilter) {
-                const [min, max] = priceFilter.split('-').map(val => parseInt(val) || Infinity);
-                if (price < min || price > max) {
-                    show = false;
+                if (priceFilter === '0-5000000') {
+                    if (price > 5000000) show = false;
+                } else if (priceFilter === '5000000-10000000') {
+                    if (price < 5000000 || price > 10000000) show = false;
+                } else if (priceFilter === '10000000-20000000') {
+                    if (price < 10000000 || price > 20000000) show = false;
+                } else if (priceFilter === '20000000+') {
+                    if (price <= 20000000) show = false;
                 }
             }
 
@@ -100,6 +111,9 @@ function filterProducts() {
         } else if (noResults) {
             noResults.remove();
         }
+        
+        // Log debug để kiểm tra kết quả
+        console.log(`Đã lọc sản phẩm, hiển thị ${visibleCount} sản phẩm`);
     } catch (error) {
         console.error('Lỗi khi lọc sản phẩm:', error);
         alert('Có lỗi xảy ra khi lọc sản phẩm');
@@ -112,34 +126,64 @@ function searchProducts() {
         const searchInput = document.querySelector('.search_box input').value.toLowerCase().trim();
         const products = document.querySelectorAll('.product_card');
         let visibleCount = 0;
+        
+        // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+        if (!searchInput) {
+            products.forEach(product => {
+                product.style.display = 'block';
+                visibleCount++;
+            });
+            
+            // Xóa thông báo "không tìm thấy" nếu có
+            const noResults = document.querySelector('.no-results');
+            if (noResults) {
+                noResults.remove();
+            }
+            
+            return;
+        }
 
         products.forEach(product => {
+            // Lấy thông tin sản phẩm
             const title = product.querySelector('h3').textContent.toLowerCase();
-            const price = parseInt(product.querySelector('.price').textContent.replace(/[^0-9]/g, ''));
-            const features = Array.from(product.querySelectorAll('.product_features span'))
-                .map(span => span.textContent.toLowerCase())
-                .join(' ');
-
-            let show = true;
+            const priceText = product.querySelector('.price').textContent;
+            const price = parseInt(priceText.replace(/[^0-9]/g, ''));
             
-            // Tìm kiếm theo tên sản phẩm
-            if (searchInput && !title.includes(searchInput)) {
-                show = false;
+            // Lấy tính năng sản phẩm nếu có
+            const featuresElements = product.querySelectorAll('.product_features span');
+            let features = '';
+            if (featuresElements.length > 0) {
+                features = Array.from(featuresElements)
+                    .map(span => span.textContent.toLowerCase())
+                    .join(' ');
             }
 
-            // Tìm kiếm theo giá
+            // Kiểm tra điều kiện tìm kiếm
+            let show = false;
+            
+            // Tìm kiếm theo tên sản phẩm - hiển thị nếu tên chứa từ khóa tìm kiếm
+            if (title.includes(searchInput)) {
+                show = true;
+            }
+            
+            // Tìm kiếm theo giá - nếu người dùng nhập số, hiển thị các sản phẩm có giá gần với số đó
+            // Cho phép sai số 20% so với giá nhập vào
             if (searchInput.match(/^\d+$/)) {
                 const searchPrice = parseInt(searchInput);
-                if (price > searchPrice) {
-                    show = false;
+                const lowerBound = searchPrice * 0.8;
+                const upperBound = searchPrice * 1.2;
+                
+                if (price >= lowerBound && price <= upperBound) {
+                    show = true;
                 }
             }
 
-            // Tìm kiếm theo tính năng
-            if (searchInput && !features.includes(searchInput)) {
-                show = false;
+            // Tìm kiếm theo tính năng - hiển thị nếu tính năng chứa từ khóa tìm kiếm
+            if (features && features.includes(searchInput)) {
+                show = true;
             }
 
+            // Áp dụng kết quả tìm kiếm
             product.style.display = show ? 'block' : 'none';
             if (show) visibleCount++;
         });
@@ -152,14 +196,19 @@ function searchProducts() {
                 message.className = 'no-results';
                 message.innerHTML = `
                     <i class="fas fa-search"></i>
-                    <p>Không tìm thấy sản phẩm phù hợp</p>
+                    <p>Không tìm thấy sản phẩm phù hợp với từ khóa "${searchInput}"</p>
                     <p class="suggestion">Gợi ý: Thử tìm kiếm với từ khóa khác hoặc điều chỉnh bộ lọc</p>
                 `;
-                document.querySelector('.products_grid').appendChild(message);
+                const productsGrid = document.querySelector('.products_grid');
+                if (productsGrid) {
+                    productsGrid.appendChild(message);
+                }
             }
         } else if (noResults) {
             noResults.remove();
         }
+        
+        console.log(`Tìm thấy ${visibleCount} sản phẩm với từ khóa "${searchInput}"`);
     } catch (error) {
         console.error('Lỗi khi tìm kiếm sản phẩm:', error);
         alert('Có lỗi xảy ra khi tìm kiếm sản phẩm');
