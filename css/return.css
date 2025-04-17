@@ -107,6 +107,18 @@
     color: #27ae60;
 }
 
+/* Responsive layout */
+@media (max-width: 992px) {
+    .return_section h1 {
+        font-size: 2.2em;
+    }
+    
+    .return_policy {
+        padding: 25px;
+        max-width: 90%;
+    }
+}
+
 @media (max-width: 768px) {
     .return_section h1 {
         font-size: 2em;
@@ -118,5 +130,45 @@
     
     .return_policy h2 {
         font-size: 1.5em;
+    }
+    
+    .steps_list li,
+    .conditions ul li {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 576px) {
+    .return_section h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    
+    .return_policy {
+        padding: 15px;
+    }
+    
+    .return_policy h2 {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+    
+    .return_policy h3 {
+        font-size: 1.2em;
+    }
+    
+    .return_policy p {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+    
+    .steps_list li,
+    .conditions ul li {
+        font-size: 0.9em;
+        margin-bottom: 8px;
+    }
+    
+    .conditions {
+        padding: 15px;
     }
 }
